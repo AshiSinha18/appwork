@@ -159,13 +159,16 @@ public class MainActivity extends AppCompatActivity
             startActivity(cic);
 
         } else if (id == R.id.pres) {
-            //Intent presi=new Intent(MainActivity.this,)
+            Intent presi=new Intent(MainActivity.this,imagepdf.class);
+            startActivity(presi);
 
         } else if (id == R.id.prof) {
             Intent profi=new Intent(MainActivity.this,login.class);
             startActivity(profi);
 
         } else if (id == R.id.chat) {
+            Intent chat=new Intent(MainActivity.this,chat.class);
+            startActivity(chat);
 
         }
 

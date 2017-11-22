@@ -1,7 +1,5 @@
 package com.suyash.dell.medicare;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -17,38 +15,66 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class confirmation extends AppCompatActivity {
 
+
+    Date dateConfirm = new Date();
+    String doctor;
+    SimpleDateFormat sfDate = new SimpleDateFormat("E, MMMM  d  yyyy");
+    SimpleDateFormat sfTime = new SimpleDateFormat("h:mm a");
+
     EditText num,sub;
     Button msgbutton;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        Intent intent = getIntent();
+        doctor = intent.getStringExtra("doctor");
+        dateConfirm.setTime(intent.getLongExtra("date", -1));
+
+        setDocDayTimeText();
+
         num=(EditText)findViewById(R.id.emailText);
+
+
         msgbutton=(Button)findViewById(R.id.confirmButton);
-        reqAskPermission(Manifest.permission.SEND_SMS,1001);
-        reqAskPermission(Manifest.permission.RECEIVE_SMS,1002);
+        reqAskPermission(android.Manifest.permission.SEND_SMS,1001);
+        reqAskPermission(android.Manifest.permission.RECEIVE_SMS,1002);
         msgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String mobilenumber=num.getText().toString();
-                // String smscontent=sub.getText().toString();
+
                 if(mobilenumber.length() > 0)
                 {
-                    sentSMS(mobilenumber,"appointment confirmed!!");
+                    sentSMS(mobilenumber,"appointment confirmed! Be 15 mins before the scheduled time for the appointment with doctor "+doctor+"at time "+sfTime.format(dateConfirm));
                 }else {
                     Toast.makeText(confirmation.this,"Enter mobile number & subject",Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+    private void setDocDayTimeText() {
+        TextView doctorTextConfirm = (TextView) findViewById(R.id.doctorTextConfirm);
+        TextView dateTextConfirm = (TextView) findViewById(R.id.dateTextConfirm);
+        TextView timeTextConfirm = (TextView) findViewById(R.id.timeTextConfirm);
+
+        doctorTextConfirm.setText(doctor);
+        dateTextConfirm.setText(sfDate.format(dateConfirm));
+        timeTextConfirm.setText(sfTime.format(dateConfirm));
     }
 
     public void sentSMS(String mob,String msg)
@@ -98,8 +124,8 @@ public class confirmation extends AppCompatActivity {
         manager.sendTextMessage(mob,null,msg,smsSEND,smsDEL);
     }
     private void reqAskPermission(String permission,int requestCode){
-        if(ContextCompat.checkSelfPermission(this,permission)!=
-                PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this,permission)!= PackageManager.PERMISSION_GRANTED)
+        {
             ActivityCompat.requestPermissions(this,new String[]{permission},requestCode);
         }else
         {
@@ -130,4 +156,5 @@ public class confirmation extends AppCompatActivity {
         }
         return;
     }
+
 }

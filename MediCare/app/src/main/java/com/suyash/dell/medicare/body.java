@@ -12,8 +12,10 @@ import java.util.Random;
 
 public class body extends AppCompatActivity {
     TextView tv1,tv2,tv3,tv4,tv5;
+    double max = 38;
+    double min = 34;
 
-    Button b1;
+    Button b1,b2;
   SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,17 @@ public class body extends AppCompatActivity {
         tv1=(TextView)findViewById(R.id.textView11);
         tv2=(TextView)findViewById(R.id.textView12);
         tv3=(TextView)findViewById(R.id.textView13);
-        tv4=(TextView)findViewById(R.id.textView14);
-        tv5=(TextView)findViewById(R.id.textView15);
         b1=(Button)findViewById(R.id.button5);
+        b2=(Button)findViewById(R.id.connect);
+        final double random = (Math.random() * (max-min)+1) + min;
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tv3.setText(Double.toString(random));
+            }
+        });
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

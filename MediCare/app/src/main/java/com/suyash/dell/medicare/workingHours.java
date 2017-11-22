@@ -1,7 +1,9 @@
 package com.suyash.dell.medicare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -22,6 +24,14 @@ public class workingHours extends AppCompatActivity {
         rb4=(RadioButton)findViewById(R.id.radioButton8);
         tv1=(TextView)findViewById(R.id.textView16);
         b1=(Button)findViewById(R.id.button6);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(workingHours.this,exerciseList.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

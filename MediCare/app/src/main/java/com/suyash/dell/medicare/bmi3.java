@@ -22,8 +22,8 @@ public class bmi3 extends AppCompatActivity {
     TextView   bmrval;
     TextView   bmrcal;
     Button calculate;
-    int min=35;
-    int max=38,p;
+    int min=1200;
+    int max=1400,p;
     SharedPreferences sp;
 
 
@@ -42,11 +42,14 @@ public class bmi3 extends AppCompatActivity {
         calculate=(Button)findViewById(R.id.button4);
         sp = getSharedPreferences("MYPREF", MODE_PRIVATE);
         Toast.makeText(getApplicationContext(),sp.getString("result",null),Toast.LENGTH_SHORT).show();
+        final double random = (Math.random() * (max-min)+1) + min;
         bmiva.setText(sp.getString("result",null));
 
-        bmrval.setText(sp.getString("result1",null));
+        bmrval.setText(Double.toString(random));
        // ed.putBoolean("isTrue",false);
        bmicat.setText(sp.getString("Category",null));
+
+        bmrcal.setText("more calories needed");
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.suyash.dell.medicare.bmi3">
+    tools:context="com.suyash.dell.medicare.bmi3"
+    android:background="@drawable/bmrback">
 
     <TextView
         android:text="BMI Value:"

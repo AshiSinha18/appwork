@@ -46,7 +46,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
             //and open profile activity
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         }
-       /* databaseReference = FirebaseDatabase.getInstance().getReference();*/
+
 
         //   firebaseAuth = FirebaseAuth.getInstance();
         etemail = (EditText) findViewById(R.id.editText7);
@@ -98,38 +98,16 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
                             //display some message here
                             Toast.makeText(signup.this, "Successfully registered", Toast.LENGTH_LONG).show();
                         } else {
-                            //display some message here
-                            Toast.makeText(signup.this, "Registration Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(signup.this,
+                                    "Login unsuccessful: " + task.getException().getMessage(), //ADD THIS
+                                    Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(signup.this, "Registration Error", Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();
                     }
                 });
 
     }
-  /* private void saveUserInformation() {
-        //Getting values from database
-        user=etuser.getText().toString().trim();
-        phone=etphone.getText().toString().trim();
-
-
-        //creating a userinformation object
-        UserInformation userInformation = new UserInformation(user,phone);
-
-        //getting the current logged in user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        //saving data to firebase database
-        /*
-        * first we are creating a new child in firebase with the
-        * unique id of logged in user
-        * and then for that user under the unique id we are saving data
-        * for saving data we are using setvalue method this method takes a normal java object
-        *
-        databaseReference.child(user.getUid()).setValue(userInformation);
-
-        //displaying a success toast
-        Toast.makeText(this, "Information Saved...", Toast.LENGTH_LONG).show();
-    }*/
 
     @Override
     public void onClick(View view) {

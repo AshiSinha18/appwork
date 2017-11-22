@@ -1,6 +1,5 @@
 url:http://djustice-android.tumblr.com
-name:Hari
-email:hariutd@gmail.com
+name:MediCareBotemail:hariutd@gmail.com
 gender:male
 botmaster:Hari Vignesh Jayapalan
 organization:Medkumo

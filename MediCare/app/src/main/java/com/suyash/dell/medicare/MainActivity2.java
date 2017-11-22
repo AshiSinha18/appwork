@@ -118,7 +118,7 @@ public class MainActivity2 extends Activity implements View.OnClickListener {
 
 
         if (dateBool && timeBool) {
-            Intent intent = new Intent("com.example.adityas.DoctorsAppointment.DoctorSelection");
+            Intent intent = new Intent(MainActivity2.this,DoctorSelection.class);
             SimpleDateFormat sfDate = new SimpleDateFormat("E MMM dd yyyy");
             SimpleDateFormat sfTime = new SimpleDateFormat("h:MM a zzz");
 //            intent.putExtra("time", sfTime.format(chosenDateTime.getTime()));

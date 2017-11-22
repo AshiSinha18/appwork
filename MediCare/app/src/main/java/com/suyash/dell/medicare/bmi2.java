@@ -52,7 +52,7 @@ public class bmi2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-           /*  if (kgButton) {
+            /* if (kgButton) {
 
                     if (maButton) {
                         resultNum2 = 66.4730 + (13.7516 * Double.parseDouble(weight2)) + (5.0033 * Double.parseDouble(height2)) - (6.7550 * Integer.parseInt(age1));
@@ -73,8 +73,8 @@ public class bmi2 extends AppCompatActivity {
                 edit.putString("result1",resultc);
                 Toast.makeText(getApplicationContext(),resultc,Toast.LENGTH_LONG).show();
          //     editor.putBoolean("isTrue",true);
-                edit.commit();
-*/                Intent i=new Intent(bmi2.this,bmi3.class);
+                edit.commit();*/
+                Intent i=new Intent(bmi2.this,bmi3.class);
                // i.putExtra(resultc,false);
                 startActivity(i);
             }
